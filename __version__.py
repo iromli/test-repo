@@ -1,2 +1,2 @@
-__version__ = "0.2"
-__previous_version__ = "0.1.1"
+__version__ = "0.3"
+__previous_version__ = "0.2"
