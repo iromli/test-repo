@@ -17,6 +17,7 @@ jobs:
           sudo apt-get update
           sudo python3 -m pip install --upgrade pip
           sudo pip3 install -r ./automation/requirements.txt
+          sudo apt-get update
 
       - uses: actions/checkout@v2
 
