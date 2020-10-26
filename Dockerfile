@@ -10,7 +10,7 @@ RUN apk update \
 
 # JAR files required to generate OpenID Connect keys
 ENV JANS_VERSION=5.0.0-SNAPSHOT
-ENV JANS_BUILD_DATE="2020-09-28 18:22"
+ENV JANS_BUILD_DATE='2020-10-02 11:56'
 ENV JANS_SOURCE_URL=https://ox.gluu.org/maven/org/janssen/janssen-client/${JANS_VERSION}/janssen-client-${JANS_VERSION}-jar-with-dependencies.jar
 
 RUN mkdir -p /app/javalibs \
