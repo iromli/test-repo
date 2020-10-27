@@ -15,3 +15,8 @@ ENV JANS_SOURCE_URL=https://ox.gluu.org/maven/org/janssen/janssen-client/${JANS_
 
 RUN mkdir -p /app/javalibs \
     && wget -q ${JANS_SOURCE_URL} -O /app/javalibs/janssen-client.jar
+
+RUN pip3 install -U pip --no-cache \
+    && pip3 install --no-cache click
+
+RUN apk del build-deps
