@@ -12,6 +12,7 @@ jobs:
       with:
         image: "local/scanimage:latest"
         acs-report-enable: true
+        grype-version: 0.2.0
     - name: Inspect action SARIF report
       run: echo ${{ steps.scan.outputs.vulnerabilities }}
     - name: upload Anchore scan SARIF report
