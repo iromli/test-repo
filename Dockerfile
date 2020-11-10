@@ -9,12 +9,12 @@ RUN apk update \
     && apk add --no-cache --virtual build-deps wget git
 
 # JAR files required to generate OpenID Connect keys
-ENV JANS_VERSION=5.0.0-SNAPSHOT
-ENV JANS_BUILD_DATE='2020-10-02 11:56'
-ENV JANS_SOURCE_URL=https://ox.gluu.org/maven/org/janssen/janssen-client/${JANS_VERSION}/janssen-client-${JANS_VERSION}-jar-with-dependencies.jar
+ENV CN_VERSION=5.0.0-SNAPSHOT
+ENV CN_BUILD_DATE="2020-10-02 11:56"
+ENV CN_SOURCE_URL=https://maven.jans.io/maven/io/jans/jans-auth-client/${CN_VERSION}/jans-auth-client-${CN_VERSION}-jar-with-dependencies.jar
 
 RUN mkdir -p /app/javalibs \
-    && wget -q ${JANS_SOURCE_URL} -O /app/javalibs/janssen-client.jar
+    && wget -q ${CN_SOURCE_URL} -O /app/javalibs/auth-client.jar
 
 RUN pip3 install -U pip --no-cache \
     && pip3 install --no-cache click
