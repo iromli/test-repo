@@ -13,8 +13,8 @@ def should_update_build(last_build, new_build):
 
 def main():
     dfparser = DockerfileParser("..")
-    base_url = os.path.dirname(dfparser.envs["JANS_SOURCE_URL"])
-    pkg_url = os.path.basename(dfparser.envs["JANS_SOURCE_URL"])
+    base_url = os.path.dirname(dfparser.envs["CN_SOURCE_URL"])
+    pkg_url = os.path.basename(dfparser.envs["CN_SOURCE_URL"])
 
     session = HTMLSession()
     req = session.get(base_url)
@@ -26,12 +26,12 @@ def main():
         first=True,
     ).text
 
-    if should_update_build(dfparser.envs["JANS_BUILD_DATE"], new_build):
-        print(f"Updating JANS_BUILD_DATE to {new_build}")
+    if should_update_build(dfparser.envs["CN_BUILD_DATE"], new_build):
+        print(f"Updating CN_BUILD_DATE to {new_build}")
         # update Dockerfile in-place
-        dfparser.envs["JANS_BUILD_DATE"] = new_build
+        dfparser.envs["CN_BUILD_DATE"] = new_build
     else:
-        print("No updates found for JANS_BUILD_DATE")
+        print("No updates found for CN_BUILD_DATE")
 
 
 if __name__ == "__main__":
