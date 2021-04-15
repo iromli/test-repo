@@ -1,0 +1,149 @@
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Pet:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+          readOnly: true
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        errors:
+          type: object
+          description: Errors
+        message:
+          type: string
+          description: Error message
+        status:
+          type: string
+          description: Error name
+  responses:
+    UNPROCESSABLE_ENTITY:
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DEFAULT_ERROR:
+      description: Default error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+paths:
+  /pets/:
+    get:
+      parameters:
+        - in: query
+          name: name
+          required: false
+          schema:
+            type: string
+      responses:
+        "422":
+          $ref: '#/components/responses/UNPROCESSABLE_ENTITY'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        default:
+          $ref: '#/components/responses/DEFAULT_ERROR'
+      summary: List pets
+      tags:
+        - pets
+    post:
+      responses:
+        "422":
+          $ref: '#/components/responses/UNPROCESSABLE_ENTITY'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        default:
+          $ref: '#/components/responses/DEFAULT_ERROR'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      summary: Add a new pet
+      tags:
+        - pets
+  /pets/{pet_id}:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        default:
+          $ref: '#/components/responses/DEFAULT_ERROR'
+      summary: Get pet by ID
+      tags:
+        - pets
+    put:
+      responses:
+        "422":
+          $ref: '#/components/responses/UNPROCESSABLE_ENTITY'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        default:
+          $ref: '#/components/responses/DEFAULT_ERROR'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      summary: Update existing pet
+      tags:
+        - pets
+    delete:
+      responses:
+        "204":
+          description: No Content
+        default:
+          $ref: '#/components/responses/DEFAULT_ERROR'
+      summary: Delete pet
+      tags:
+        - pets
+    parameters:
+      - in: path
+        name: pet_id
+        required: true
+        schema:
+          type: string
+          minLength: 1
+info:
+  title: My API
+  version: v1
+tags:
+  - name: pets
+    description: Operations on pets
+openapi: 3.0.2
