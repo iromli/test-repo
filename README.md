@@ -1,3 +1,3 @@
 # test-repo
 
-This repo is a place for experiments.
+This repo is a place for personal experiments.
