@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/iromli/test-repo/compare/v0.5.1...v0.6.0) (2022-05-29)
+
+
+### Features
+
+* another testing ([682d551](https://github.com/iromli/test-repo/commit/682d551755926e5cf0337336c344e7267f887382))
+
 ### [0.5.1](https://github.com/iromli/test-repo/compare/v0.5.0...v0.5.1) (2022-05-28)
 
 
