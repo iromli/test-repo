@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.6.3](https://github.com/iromli/test-repo/compare/v0.6.2...v0.6.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* mitigate critical issue [#15](https://github.com/iromli/test-repo/issues/15) ([#18](https://github.com/iromli/test-repo/issues/18)) ([9873120](https://github.com/iromli/test-repo/commit/987312058949d1e22a5bb0ee0ddcc9e9b196c3f8))
+
 ### [0.6.2](https://github.com/iromli/test-repo/compare/v0.6.1...v0.6.2) (2022-05-29)
 
 
